@@ -1,0 +1,6 @@
+framework module libqylive {
+  umbrella header "libqylive.h"
+
+  export *
+  module * { export * }
+}
