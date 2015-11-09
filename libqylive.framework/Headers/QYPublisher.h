@@ -50,11 +50,11 @@
 // capture settings
 /**
  @abstract   视频分辨率
- @discussion 本次推流的名称
+ @discussion width x height （ 此处width始终大于高度，是否竖屏取决于videoOrientation的值 )
 
  @see QYVideoDimension
  */
-@property (nonatomic, assign) QYVideoDimension          videoDimension;
+@property (nonatomic, assign) QYVideoDimension        videoDimension;
 
 /**
  @abstract   摄像头位置
@@ -191,6 +191,13 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
 - (double) streamKbps;
 
 /**
+ @abstract   获取本次推流发送的流量大小
+ @discussion 从开始推流到现在，发送出去的数据字节数，单位为KByte
+ 
+ */
+- (int) uploadedKByte;
+
+/**
  @abstract   切换摄像头
  @discussion 在前后摄像头间切换，从当前的摄像头切换到另一个，切换成功则修改cameraPosition的值
  @discussion 开始预览后开始有效，推流过程中也响应切换请求
@@ -216,6 +223,22 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
  @see AVCaptureTorchMode
  */
 - (void) setTorchMode: (AVCaptureTorchMode)mode;
+
+/**
+ @abstract   设置预览画面镜像
+ @param      bMirror  是否绕竖直轴镜像预览画面
+ @discussion 默认为系统自动处理镜像功能
+ @discussion 开始预览后开始有效
+ */
+- (void) setPreviewMirrored: (BOOL) bMirror;
+
+/**
+ @abstract   设置采集视频画面镜像
+ @param      bMirror  是否绕竖直轴镜像采集到的画面
+ @discussion 默认为系统自动处理镜像功能
+ @discussion 开始预览后开始有效
+ */
+- (void) setVideoMirrored: (BOOL) bMirror;
 
 /**
  @abstract   获取当前采集设备的指针

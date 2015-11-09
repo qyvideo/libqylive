@@ -6,8 +6,8 @@
 //  Copyright © 2015 qyvideo. All rights reserved.
 //
 
-#ifndef QYAuth_h
-#define QYAuth_h
+#ifndef QYPlayerAuth_h
+#define QYPlayerAuth_h
 /**
  仟壹播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：
 

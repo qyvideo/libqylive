@@ -31,6 +31,8 @@ typedef NS_ENUM(NSUInteger, QYVideoDimension) {
     QYVideoDimension_16_9__1280x720,
     /// 4 : 3 横纵比，640 x 480 分辨率
     QYVideoDimension_4_3__640x480,
+    /// 16 : 9 横纵比，640 x 360 分辨率
+    QYVideoDimension_16_9__640x360,
     /// 自定义分辨率
     //QYVideoDimension_UserDefine,
     /// 默认分辨率，默认为 4 : 3 横纵比，640 x 480 分辨率
@@ -48,6 +50,18 @@ typedef NS_ENUM(NSUInteger, QYVideoCodec) {
     QYVideoCodec_QY265,
 };
 
+#pragma mark - Video Gravity
+/*!
+ * @abstract  预览视频的填充方式
+ */
+typedef NS_ENUM(NSUInteger, QYVideoGravity) {
+    /// 保持宽高比，留白边 Preserve aspect ratio; fit within layer bounds.
+    QYVideoGravity_ResizeAspect = 0,
+    /// 保持宽高比并填充，裁剪边缘 Preserve aspect ratio; fill layer bounds.
+    QYVideoGravity_ResizeAspectFill,
+    /// 拉伸 Stretch to fill layer bounds.
+    QYVideoGravity_Resize,
+};
 
 #pragma mark - QYPublisher State
 

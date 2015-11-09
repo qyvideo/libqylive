@@ -112,12 +112,5 @@
  */
 + (NSString *)QYMD5:(NSString*)raw;
 
-QY_EXTERN NSString * const QYAuthAppid;
-QY_EXTERN NSString * const QYAuthAccessKey;
-QY_EXTERN NSString * const QYAuthSecretKeySign;
-QY_EXTERN NSString * const QYAuthTimeSeconds;
-QY_EXTERN NSString * const QYAuthMCode;
-QY_EXTERN NSString * const QYAuthSam;
-
 @end
 #endif /* QYAuthInfo_h */
