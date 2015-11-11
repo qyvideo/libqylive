@@ -112,6 +112,16 @@
  */
 @property (nonatomic, readonly) QYStreamState streamState;
 
+/**
+ @abstract   当前推流的错误码
+ @discussion 可以通过该属性获取推流失败的原因
+ 
+ @discussion 当streamState 为QYStreamStateError时可查询
+ @discussion 状态变化后清0
+ @see streamState
+ */
+@property (nonatomic, readonly) QYStreamErrorCode streamErrorCode;
+
 // Posted when capture state changes
 QY_EXTERN NSString *const QYCaptureStateDidChangeNotification NS_DEPRECATED_IOS(3_2, 9_0);
 // Posted when stream state changes

@@ -78,6 +78,7 @@ typedef NS_ENUM(NSUInteger, QYCaptureState) {
     /// 关闭采集设备中
     QYCaptureStateClosingCapture,
 };
+
 /*!
  * @abstract  推流状态
  */
@@ -90,10 +91,27 @@ typedef NS_ENUM(NSUInteger, QYStreamState) {
     QYStreamStateConnected,
     /// 断开连接中
     QYStreamStateDisconnecting,
-    /// 连接出错
+    /// 推流出错
     QYStreamStateError,
-    /// QYAuthFailed
-    QYStreamStateQYAuthFailed,
+};
+
+
+/*!
+ * @abstract  推流错误码，用于指示推流失败的原因
+ */
+typedef NS_ENUM(NSUInteger, QYStreamErrorCode) {
+    /// 正常无错误
+    QYStreamErrorCode_NONE = 0,
+    /// QYAuthFailed, SDK 鉴权失败
+    QYStreamErrorCode_QYAUTHFAILED,
+    /// 当前帧编码失败
+    QYStreamErrorCode_ENCODE_FRAMES_FAILED,
+    /// 无法打开配置指示的CODEC，see QYVideoCodec
+    QYStreamErrorCode_CODEC_OPEN_FAILED,
+    /// 连接出错，检查地址
+    QYStreamErrorCode_CONNECT_FAILED,
+    /// 网络连接中断
+    QYStreamErrorCode_CONNECT_BREAK,
 };
 
 #pragma mark - QY_EXTERN
