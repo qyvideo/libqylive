@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'libqyliveFramework'
-  spec.version      = '0.1.9'
+  spec.version      = '0.1.10'
   spec.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.frameworks   = 'VideoToolbox'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
-  spec.source = { :git => 'https://github.com/qyvideo/libqylive.git', :tag => 'v0.1.9'}
+  spec.source = { :git => 'https://github.com/qyvideo/libqylive.git', :tag => 'v0.1.10'}
   spec.preserve_paths      = 'libqylive.framework'
   spec.public_header_files = 'libqylive.framework/Headers'
   spec.vendored_frameworks = 'libqylive.framework'

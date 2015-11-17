@@ -184,7 +184,7 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
 - (void) destroySession;
 
 /**
- @abstract   获取当前编码的视频帧率
+ @abstract   获取当前编码的平均视频帧率
  @discussion 采集设备的输出帧率为videoFPS，为编码的目标帧率
  @discussion 编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率
  
@@ -206,6 +206,13 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
  
  */
 - (int) uploadedKByte;
+
+/**
+ @abstract   获取本次推流编码的视频总帧数
+ @discussion 从开始推流到现在，编码过的视频总帧数
+ 
+ */
+- (int) encodedFrames;
 
 /**
  @abstract   切换摄像头
