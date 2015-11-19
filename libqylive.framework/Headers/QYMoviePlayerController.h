@@ -211,7 +211,20 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
  @since Available in QYMoviePlayerController 1.0 and later.
  */
 // The flow size of the movie which has been download, or 0.0 if not known.
-@property (nonatomic, readonly) NSTimeInterval readSize;
+@property (nonatomic, readonly) double readSize;
+
+/**
+ @abstract buffer为空时，拉取数据所耗的时长
+ @warning 该方法由仟壹引入，不是原生系统接口
+ @discussion 当buffer为空时，开始统计。单位为秒。
+ 
+ * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起；
+ * MPMovieLoadState状态为MPMovieLoadStateStalled 开始计时；
+ * MPMovieLoadState状态为MPMovieLoadStatePlayable 或者 MPMovieLoadStatePlaythroughOK时，结束计时；
+ 
+ @since Available in QYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration;
 
 /**
  @abstract 发起cache的次数
@@ -220,19 +233,6 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
  
  * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起
  * MPMovieLoadState 状态为MPMovieLoadStateStalled
- 
- @since Available in QYMoviePlayerController 1.0 and later.
- */
-@property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration;
-
-/**
- @abstract buffer为空时，拉取数据所耗的时长
- @warning 该方法由仟壹引入，不是原生系统接口
- @discussion 当buffer为空时，开始统计。
- 
- * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起；
- * MPMovieLoadState状态为MPMovieLoadStateStalled 开始计时；
- * MPMovieLoadState状态为MPMovieLoadStatePlayable 或者 MPMovieLoadStatePlaythroughOK时，结束计时；
  
  @since Available in QYMoviePlayerController 1.0 and later.
  */
@@ -258,6 +258,14 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
  */
 // The threshol of the movie refresh timeout,  or 2000 if not known.
 @property (nonatomic, readwrite) NSInteger timeoutThreshold;
+
+/**
+ @abstract 视频流server ip
+ @warning 该方法由仟壹引入，不是原生系统接口
+ @discussion 当收到prepared后，即可以查询当前连接的视频流server ip.
+ @since Available in QYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, readonly) NSString* serverAddress;
 
 // Posted when the refresh timeout
 MP_EXTERN NSString * const QYMoviePlayerRefreshTimeoutNotification NS_DEPRECATED_IOS(3_2, 9_0);

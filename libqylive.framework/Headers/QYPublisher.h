@@ -185,7 +185,7 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
 
 /**
  @abstract   获取当前编码的平均视频帧率
- @discussion 采集设备的输出帧率为videoFPS，为编码的目标帧率
+ @discussion 采集设备的输出帧率为videoFPS，约等于编码的目标帧率
  @discussion 编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率
  
  @see videoFPS
@@ -193,7 +193,7 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
 - (double) encodingFPS;
 
 /**
- @abstract   获取当前推流的码率大小
+ @abstract   获取当前推流的平均码率大小
  @discussion 该码率为实际推流发出的总码率大小，包括音频和视频，单位为kbps
  
  @see videokBPS, audiokBPS
@@ -213,6 +213,13 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
  
  */
 - (int) encodedFrames;
+
+/**
+ @abstract 当前推流的rtmp服务器的主机IP
+ @discussion 开始推流之后获取才为有效IP, 之前为空字符串
+ 
+ */
+- (NSString*) rtmpHostIP;
 
 /**
  @abstract   切换摄像头

@@ -106,7 +106,7 @@ typedef NS_ENUM(NSUInteger, QYStreamErrorCode) {
     QYStreamErrorCode_QYAUTHFAILED,
     /// 当前帧编码失败
     QYStreamErrorCode_ENCODE_FRAMES_FAILED,
-    /// 无法打开配置指示的CODEC，see QYVideoCodec
+    /// 无法打开配置指示的CODEC
     QYStreamErrorCode_CODEC_OPEN_FAILED,
     /// 连接出错，检查地址
     QYStreamErrorCode_CONNECT_FAILED,
