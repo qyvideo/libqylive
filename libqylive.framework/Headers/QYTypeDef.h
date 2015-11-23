@@ -28,11 +28,15 @@ typedef NS_ENUM(NSUInteger, QYDevAuthStatus) {
 /// 采集分辨率
 typedef NS_ENUM(NSUInteger, QYVideoDimension) {
     /// 16 : 9 横纵比，1280 x 720 分辨率
-    QYVideoDimension_16_9__1280x720,
+    QYVideoDimension_16_9__1280x720 = 0,
+    /// 16 : 9 横纵比，960 x 540 分辨率
+    QYVideoDimension_16_9__960x540,
     /// 4 : 3 横纵比，640 x 480 分辨率
     QYVideoDimension_4_3__640x480,
     /// 16 : 9 横纵比，640 x 360 分辨率
     QYVideoDimension_16_9__640x360,
+    /// 4 : 3 横纵比，320 x 240 分辨率
+    QYVideoDimension_5_4__352x288,
     /// 自定义分辨率
     //QYVideoDimension_UserDefine,
     /// 默认分辨率，默认为 4 : 3 横纵比，640 x 480 分辨率
