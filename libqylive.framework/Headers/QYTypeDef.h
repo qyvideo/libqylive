@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, QYVideoGravity) {
 #pragma mark - QYPublisher State
 
 /*!
- * @abstract  推流状态
+ * @abstract  采集设备状态
  */
 typedef NS_ENUM(NSUInteger, QYCaptureState) {
     /// 设备空闲中
@@ -99,7 +99,6 @@ typedef NS_ENUM(NSUInteger, QYStreamState) {
     QYStreamStateError,
 };
 
-
 /*!
  * @abstract  推流错误码，用于指示推流失败的原因
  */
@@ -116,6 +115,16 @@ typedef NS_ENUM(NSUInteger, QYStreamErrorCode) {
     QYStreamErrorCode_CONNECT_FAILED,
     /// 网络连接中断
     QYStreamErrorCode_CONNECT_BREAK,
+};
+
+/*!
+ * @abstract  网络状况事件码，用于指示当前网络健康状况
+ */
+typedef NS_ENUM(NSUInteger, QYNetStateCode) {
+    /// 正常无错误
+    QYNetStateCode_NONE = 0,
+    /// 发送包时间过长，( 单次发送超过 500毫秒 ）
+    QYNetStateCode_SEND_PACKET_SLOW,
 };
 
 #pragma mark - QY_EXTERN

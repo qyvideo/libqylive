@@ -11,7 +11,7 @@
  QYMediaPlayback为播放内核[QYMoviePlayerController](QYMoviePlayerController)提供播放控制功能。
  
  ## 联系我们
- 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，金山云工程师会在第一时间回复您。
+ 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，仟壹工程师会在第一时间回复您。
  
  __E-mail__:  linsong@qyvideo.cn
  

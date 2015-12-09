@@ -93,6 +93,12 @@
 @property (nonatomic, assign) int          audiokBPS;   // kbit/s of audio
 
 /**
+ @abstract   启用自动调整码率
+ @discussion 默认为关闭自动调整码率,开始推流前设置有效
+ */
+@property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
+
+/**
  @abstract 当前采集设备状况
  @discussion 可以通过该属性获取采集设备的工作状况
  
@@ -122,10 +128,23 @@
  */
 @property (nonatomic, readonly) QYStreamErrorCode streamErrorCode;
 
+/**
+ @abstract   当前推流的网络事件
+ @discussion 可以通过该属性查询网络状况
+ 
+ @discussion 通知：
+ * QYNetStateEventNotification 当检测到网络发生特定事件时SDK发出通知
+ * 收到通知后，通过本属性查询具体事件类型
+ @see QYNetStateEventNotification
+ */
+@property (nonatomic, readonly) QYNetStateCode netStateCode;
+
 // Posted when capture state changes
 QY_EXTERN NSString *const QYCaptureStateDidChangeNotification NS_DEPRECATED_IOS(3_2, 9_0);
 // Posted when stream state changes
 QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3_2, 9_0);
+// Posted when there is an net state event
+QY_EXTERN NSString *const QYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9_0);
 
 // methods
 /**
@@ -182,7 +201,6 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
  @see stopSessionStream
  */
 - (void) destroySession;
-
 /**
  @abstract   获取当前编码的平均视频帧率
  @discussion 采集设备的输出帧率为videoFPS，约等于编码的目标帧率
@@ -201,6 +219,7 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
 - (double) streamKbps;
 
 /**
+
  @abstract   获取本次推流发送的流量大小
  @discussion 从开始推流到现在，发送出去的数据字节数，单位为KByte
  
@@ -213,6 +232,40 @@ QY_EXTERN NSString *const QYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3
  
  */
 - (int) encodedFrames;
+
+/**
+ @abstract   获取本次推流发送的丢帧数量
+ @discussion 这里是指编码后，由于网络发送阻塞导致丢弃的帧数
+ 
+ */
+- (int) droppedVideoFrames;
+
+/**
+ @abstract   获取本次推流的rtmp缓存数据的时间长度
+ @discussion rtmp缓存是音视频数据交织的，单位为秒
+ 
+ */
+- (double) rtmpBufferDuration;
+
+/**
+ @abstract   获取本次推流的rtmp缓存的包个数
+ @discussion rtmp缓存是音视频数据交织的，包的数量包括音视频数据包
+ 
+ */
+- (int) rtmpBufferPackets;
+
+/**
+ @abstract   获取本次推流的rtmp缓存的字节数
+ 
+ */
+- (int) rtmpBufferSize;
+
+/**
+ @abstract   获取估计的可用发送带宽
+ @discussion 根据过去rtmp发送的状况估计的发送带宽，单位为kbps
+ 
+ */
+- (int) rtmpEstimateBandwidth;
 
 /**
  @abstract 当前推流的rtmp服务器的主机IP

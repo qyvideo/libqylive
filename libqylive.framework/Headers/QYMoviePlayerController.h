@@ -3,22 +3,22 @@
 //  QYMediaPlayer
 //
 //  Created by zengfanping on 10/12/15.
-//  Copyright © 2015 ksy. All rights reserved.
+//  Copyright © 2015 qyvideo. All rights reserved.
 //
 
 #import "QYMediaPlayback.h"
 #import <MediaPlayer/MediaPlayer.h>
 /**
- 金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
+ 仟壹播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。仟壹播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
  
- 在任何平台上，金山云播放内核都提供底层开发接口，开发者可自由实现个性的进度条、播放按钮、设置等播放界面元素。金山云提供丰富的播放器调用示例，全部以source code开放，并提供详尽的接口说明文档，让视频应用快速搭建、开发和发布。
+ 在任何平台上，仟壹播放内核都提供底层开发接口，开发者可自由实现个性的进度条、播放按钮、设置等播放界面元素。仟壹提供丰富的播放器调用示例，全部以source code开放，并提供详尽的接口说明文档，让视频应用快速搭建、开发和发布。
  
- 金山云播放内核iOS版继承自系统播放器MPMoviePlayerController，适配支持iOS 7.0以上机型，提供系统一致的播放控制接口，在系统播放器基础上新增如下功能：
+ 仟壹播放内核iOS版继承自系统播放器MPMoviePlayerController，适配支持iOS 7.0以上机型，提供系统一致的播放控制接口，在系统播放器基础上新增如下功能：
  
- * 集成金山云高效H.265解码器，解码效率高于开源版本OpenHEVC一倍以上；
+ * 集成仟壹高效H.265解码器，解码效率高于开源版本OpenHEVC一倍以上；
  * 支持rmvb/flv/avi/mkv/mov等主流封装格式；
  * 支持HLS/rtmp协议；
- * 完美支持rtmp/http live streaming，结合金山云直播流动态调整功能，实现持续低于2秒的低延时直播体验。
+ * 完美支持rtmp/http live streaming，结合仟壹直播流动态调整功能，实现持续低于2秒的低延时直播体验。
 
  ## 环境搭建
  QYMediaPlayer依赖如下第三方库：
@@ -34,9 +34,9 @@
  * 当前iOS framework版本只支持iOS 7.0及以上版本。
  
  ## 联系我们
- 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，金山云工程师会在第一时间回复您。
+ 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，仟壹工程师会在第一时间回复您。
  
- __E-mail__:  zengfanping@kingsoft.com
+ __E-mail__:  linsong@qyvideo.cn
  
  ## 版本信息
  __Version__: 1.0
@@ -192,7 +192,7 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
 #pragma mark QYMoviePlayerController New Feature
 /**
  @abstract 当前播放器是否在播放
- @warning 该方法由金山云引入，不是原生系统接口
+ @warning 该方法由仟壹引入，不是原生系统接口
  @return 获取[playbackState]([QYMoviePlayerController playbackState])信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。
  @see playbackState
  @since Available in QYMoviePlayerController 1.0 and later.
@@ -202,7 +202,7 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
 
 /**
  @abstract 已经加载的数据大小
- @warning 该方法由金山云引入，不是原生系统接口
+ @warning 该方法由仟壹引入，不是原生系统接口
  @discussion 已经加载的数据大小，单位是兆。
  
  * 已经加载的全部数据大小，包括音频和视频。
@@ -211,28 +211,28 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
  @since Available in QYMoviePlayerController 1.0 and later.
  */
 // The flow size of the movie which has been download, or 0.0 if not known.
-@property (nonatomic, readonly) double readSize;
+@property (nonatomic, readonly) NSTimeInterval readSize;
 
 /**
- @abstract buffer为空时，拉取数据所耗的时长
- @warning 该方法由金山云引入，不是原生系统接口
- @discussion 当buffer为空时，开始统计。单位为秒。
+ @abstract 发起cache的次数
+ @warning 该方法由仟壹引入，不是原生系统接口
+ @discussion 当buffer为空时，统计一次，统计的条件为
  
- * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起；
- * MPMovieLoadState状态为MPMovieLoadStateStalled 开始计时；
- * MPMovieLoadState状态为MPMovieLoadStatePlayable 或者 MPMovieLoadStatePlaythroughOK时，结束计时；
+ * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起
+ * MPMovieLoadState 状态为MPMovieLoadStateStalled
  
  @since Available in QYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration;
 
 /**
- @abstract 发起cache的次数
- @warning 该方法由金山云引入，不是原生系统接口
- @discussion 当buffer为空时，统计一次，统计的条件为
+ @abstract buffer为空时，拉取数据所耗的时长
+ @warning 该方法由仟壹引入，不是原生系统接口
+ @discussion 当buffer为空时，开始统计。
  
- * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起
- * MPMovieLoadState 状态为MPMovieLoadStateStalled
+ * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起；
+ * MPMovieLoadState状态为MPMovieLoadStateStalled 开始计时；
+ * MPMovieLoadState状态为MPMovieLoadStatePlayable 或者 MPMovieLoadStatePlaythroughOK时，结束计时；
  
  @since Available in QYMoviePlayerController 1.0 and later.
  */
@@ -241,7 +241,7 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
 
 /**
  @abstract 卡顿上报时长
- @warning 该方法由金山云引入，不是原生系统接口
+ @warning 该方法由仟壹引入，不是原生系统接口
  @discussion 当播放器进入卡顿，上报逻辑如下
  
  * 单位为毫秒，默认值2000毫秒；
@@ -258,14 +258,6 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification NS_DEPREC
  */
 // The threshol of the movie refresh timeout,  or 2000 if not known.
 @property (nonatomic, readwrite) NSInteger timeoutThreshold;
-
-/**
- @abstract 视频流server ip
- @warning 该方法由金山云引入，不是原生系统接口
- @discussion 当收到prepared后，即可以查询当前连接的视频流server ip.
- @since Available in QYMoviePlayerController 1.0 and later.
- */
-@property (nonatomic, readonly) NSString* serverAddress;
 
 // Posted when the refresh timeout
 MP_EXTERN NSString * const QYMoviePlayerRefreshTimeoutNotification NS_DEPRECATED_IOS(3_2, 9_0);

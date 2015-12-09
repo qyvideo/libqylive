@@ -9,14 +9,14 @@
 #ifndef QYPlayerAuth_h
 #define QYPlayerAuth_h
 /**
- 金山云播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：
+ 仟壹播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：
 
- * 播放画面出现金山云logo
+ * 播放画面出现仟壹logo
  * 播放一定时间后停止播放
  * 以及其他异常现象发生
  
  ## 联系我们
- 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，金山云工程师会在第一时间回复您。
+ 当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，仟壹工程师会在第一时间回复您。
  
  __E-mail__:  linsong@qyvideo.cn
   
@@ -32,13 +32,13 @@
 
 /**
  @abstract 开发者设置的开发者标识
- @discussion 该信息由haomingfei@kingsoft.com提供。
+ @discussion 该信息由仟壹开发者中心提供。
  @since Available in QYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSString *appId;
 /**
  @abstract 开发者设置的应用接入信息
- @discussion 该信息由haomingfei@kingsoft.com提供。
+ @discussion 该信息由仟壹开发者中心提供。
  @since Available in QYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSString *accessKey;
@@ -47,7 +47,7 @@
  @abstract 开发者设置的密钥
  @discussion 加密算法请见setAuthInfo
 
- 可以使用以下方法获取secretKey，其中"iamskey"为用户密钥，需要从金山云服务器获取。sksign则为secretKey：
+ 可以使用以下方法获取secretKey，其中"iamskey"为用户密钥，需要从仟壹服务器获取。sksign则为secretKey：
  <pre><code>
  //需要import CommonCrypto/CommonDigest.h
 
@@ -104,7 +104,7 @@
 
 /**
  @abstract 设置认证信息
- @param appId 开发者标识，由haomingfei@kingsoft.com分配
+ @param appId 开发者标识，由仟壹开放平台对开发者分配
  @param ak 应用接入信息，与SecretKey对应，由开放平台针对appid分配
  @param skSign 设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接
  @param seconds 1970年至今经过的秒数。
