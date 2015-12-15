@@ -125,6 +125,10 @@ typedef NS_ENUM(NSUInteger, QYNetStateCode) {
     QYNetStateCode_NONE = 0,
     /// 发送包时间过长，( 单次发送超过 500毫秒 ）
     QYNetStateCode_SEND_PACKET_SLOW,
+    /// 估计带宽调整，上调
+    QYNetStateCode_EST_BW_RAISE,
+    /// 估计带宽调整，下调
+    QYNetStateCode_EST_BW_DROP,
 };
 
 #pragma mark - QY_EXTERN

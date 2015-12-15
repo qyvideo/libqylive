@@ -94,7 +94,7 @@
 
 /**
  @abstract   启用自动调整码率
- @discussion 默认为关闭自动调整码率,开始推流前设置有效
+ @discussion 默认为关闭自动调整码率,开始预览前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
 
@@ -239,33 +239,6 @@ QY_EXTERN NSString *const QYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9_0
  
  */
 - (int) droppedVideoFrames;
-
-/**
- @abstract   获取本次推流的rtmp缓存数据的时间长度
- @discussion rtmp缓存是音视频数据交织的，单位为秒
- 
- */
-- (double) rtmpBufferDuration;
-
-/**
- @abstract   获取本次推流的rtmp缓存的包个数
- @discussion rtmp缓存是音视频数据交织的，包的数量包括音视频数据包
- 
- */
-- (int) rtmpBufferPackets;
-
-/**
- @abstract   获取本次推流的rtmp缓存的字节数
- 
- */
-- (int) rtmpBufferSize;
-
-/**
- @abstract   获取估计的可用发送带宽
- @discussion 根据过去rtmp发送的状况估计的发送带宽，单位为kbps
- 
- */
-- (int) rtmpEstimateBandwidth;
 
 /**
  @abstract 当前推流的rtmp服务器的主机IP
