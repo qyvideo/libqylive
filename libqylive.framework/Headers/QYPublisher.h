@@ -94,7 +94,7 @@
 
 /**
  @abstract   启用自动调整码率
- @discussion 默认为关闭自动调整码率,开始预览前设置有效
+ @discussion 默认为关闭自动调整码率,开始推流前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
 
